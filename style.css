@@ -80,12 +80,13 @@ h4 {
 }
 
 .customer_info button {
-    width: 50px;
-    height: 25px;
+    width: 120px;
+    height: 30px;
+    font-size: large;
     font-weight: 700;
     background-color: white;
     border: 1px solid #00315f;
     border-radius: 3px;
-    margin-left: 10px;
+    margin-left: calc(50% - 60px);
     color: #00315f;
 }
