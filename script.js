@@ -40,7 +40,9 @@ var form = document.querySelector("form");
 
 let Sales = [];
 
+
 const addSale = () => {
+
     let sale = {
         customersName: custName.value,
         customersAddress: custAddress.value,
@@ -63,9 +65,25 @@ const addSale = () => {
     console.log(Sales);
 }
 
+function buildTable(data) {
+    var table = document.getElementById('tbl');
+
+    for (let i = 0; i < data.length; i++) {
+        var row = `<tr>
+                        <td>${data[i].customersName}</td>
+                        <td>${data[i].customersAddress}</td>
+                        <td>${data[i].customersPhone}</td>
+                        <td>${data[i].customersPurchase}</td>
+                  </tr>`
+
+        table.innerHTML += row
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
     addCust_info.addEventListener('click', () => {
         addSale();
+        buildTable(Sales);
     })
 })
