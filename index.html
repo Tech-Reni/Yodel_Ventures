@@ -17,13 +17,10 @@
 
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Egg Rate</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Statistics</a>
+                    <a href="eggStats.html" class="nav-link">Egg Statistics</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -34,25 +31,24 @@
         </nav>
     </header>
 
-    <div class="customer_info">
-        <h3>Add Customer</h3><br>
-        <p>Customer's Name :</p>
-        <input type="text" placeholder="Enter Name..." name="Customer's Name" id="cust_name">
-        <p>Address :</p>
-        <input type="text" placeholder="Enter Address..." name="Address" id="cust_address">
-        <p>Phone :</p>
-        <input type="number" placeholder="Enter Phone Num.." name="Phone Number" id="cust_phoneNum">
-        <p>Purchase :</p>
-        <input type="number" placeholder="Number of Crates.." name="Number of Crates" id="Num_of_eggs"><br><br>
-        <button id="add_customer_info">Add</button>
+    <div class="sale_info">
+        <h3>Add Sale</h3><br>
+        <p>No. of Crates :</p>
+        <input type="number" placeholder="No. of Crates.." name="No. of Crates" id="num_of_crates">
+        <p>Price per crate:</p>
+        <input type="text" placeholder="Enter Price..." name="Price(per Crate)" id="price_per_crate">
+        <p>Date :</p>
+        <input type="date" name="Date Bought" id="date_bought">
+        <br><br>
+        <button id="add_sale_info">Add</button>
     </div>
 
     <table id="tbl" class="table">
         <thead>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Purchase</th>
+            <th>No. of Crates</th>
+            <th>Price(per)</th>
+            <th>Date</th>
+            <th>Total</th>
         </thead>
 
         <tbody>
@@ -60,7 +56,7 @@
         </tbody>
     </table>
 
-    <input type="button" value="+" class="add_customer">
+    <input type="button" value="+" class="add_sale">
 
     <script src="script.js"></script>
 </body>
