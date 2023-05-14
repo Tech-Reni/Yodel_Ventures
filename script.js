@@ -23,18 +23,17 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
     navMenu.classList.remove("active")
 }));
 
-var add_customer = document.querySelector(".add_customer");
-var cust_info = document.querySelector(".customer_info");
-add_customer.addEventListener('click', () => {
-    add_customer.classList.toggle("active");
-    cust_info.classList.toggle("active");
+var add_sale = document.querySelector(".add_sale");
+var sale_info = document.querySelector(".sale_info");
+add_sale.addEventListener('click', () => {
+    add_sale.classList.toggle("active");
+    sale_info.classList.toggle("active");
 })
 
-var addCust_info = document.getElementById("add_customer_info");
-var custName = document.getElementById("cust_name"); //THE CUSTOMER'S NAME
-var custAddress = document.getElementById("cust_address"); //THE CUSTOMER'S ADDRESS
-var custPhone = document.getElementById("cust_phoneNum"); //THE CUSTOMER'S PHONE NUMBER
-var custPurchase = document.getElementById("Num_of_eggs"); //HOW MANY EGGS THE CUSTOMER BOUGHT
+var addSale_info = document.getElementById("add_sale_info");
+var num_of_crates = document.getElementById("num_of_crates"); //THE NUMBER OF CRATES BOUGHT
+var price_per_crate = document.getElementById("price_per_crate"); //THE PRICE PER EACH CRATE BOUGHT(CAUSE PRICES OF EGG VARIES)
+var date_bought = document.getElementById("date_bought"); //THE DATE THAT THE EGG WAS BOUGHT
 
 var form = document.querySelector("form");
 
@@ -44,46 +43,47 @@ let Sales = [];
 const addSale = () => {
 
     let sale = {
-        customersName: custName.value,
-        customersAddress: custAddress.value,
-        customersPhone: custPhone.value,
-        customersPurchase: custPurchase.value
+        numberOfCrates: num_of_crates.value,
+        pricePerCrate: price_per_crate.value,
+        dateBought: date_bought.value,
+        Total: num_of_crates.value * price_per_crate.value
     }
 
     Sales.push(sale)
 
     // To clear the inputs
-    custName.value = "";
-    custAddress.value = "";
-    custPhone.value = "";
-    custPurchase.value = "";
-    //Clearing the input ends here
+    num_of_crates.value = "";
+    price_per_crate.value = "";
+    date_bought.value = ""
+        //Clearing the input ends here
 
     //Saving to LocalStorage
     localStorage.setItem('Sales', JSON.stringify(sale));
+    buildTable([sale])
 
     console.log(Sales);
 }
 
+
+var table = document.getElementById('tbl');
+
+
 function buildTable(data) {
-    var table = document.getElementById('tbl');
 
     for (let i = 0; i < data.length; i++) {
         var row = `<tr>
-                        <td>${data[i].customersName}</td>
-                        <td>${data[i].customersAddress}</td>
-                        <td>${data[i].customersPhone}</td>
-                        <td>${data[i].customersPurchase}</td>
+                        <td>${data[i].numberOfCrates}</td>
+                        <td>${data[i].pricePerCrate}</td>
+                        <td>${data[i].dateBought}</td>
+                        <td>${data[i].Total}</td>
                   </tr>`
 
         table.innerHTML += row
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    addCust_info.addEventListener('click', () => {
+    addSale_info.addEventListener('click', () => {
         addSale();
-        buildTable(Sales);
     })
 })
